@@ -1,0 +1,37 @@
+/* Estilos dos slides */
+html{background:#000;color-scheme:dark}
+html.deck-js{overflow:hidden auto;scroll-snap-type:y mandatory;scrollbar-width:none}
+html.deck-js::-webkit-scrollbar{display:none}
+body{margin:0;background:#000;overflow:visible}
+main{color-scheme:light}
+.deck-slide{display:block;width:1920px;height:1080px}
+.deck-fit{position:relative;width:1920px;height:1080px;overflow:hidden}
+.deck-scaler{width:1920px;height:1080px}
+.deck-js .deck-slide{width:auto;height:100vh;height:100dvh;display:flex;align-items:center;justify-content:center;overflow:hidden;scroll-snap-align:start;scroll-snap-stop:always}
+.deck-js .deck-fit{flex:none;width:calc(1920px*var(--deck-s));height:calc(1080px*var(--deck-s))}
+.deck-js .deck-scaler{transform:scale(var(--deck-s));transform-origin:0 0}
+.deck-pager{position:fixed;z-index:3;right:16px;bottom:16px;padding:4px 10px;border-radius:999px;background:rgba(0,0,0,.7);color:#fff;font:12px/1.5 system-ui,sans-serif;font-variant-numeric:tabular-nums;opacity:0;transition:opacity .3s;pointer-events:none}
+.deck-pager[data-on]{opacity:1}
+@media (max-aspect-ratio:1/1){html.deck-js{scroll-snap-type:y proximity}.deck-js .deck-slide{height:auto;padding:6px 0;scroll-snap-stop:normal}.deck-js .deck-slide:first-child{padding-top:0}}
+[data-finished-gone]{visibility:hidden}
+@media screen{html.deck-stage{overflow:hidden}.deck-stage body{overflow:hidden}.deck-stage main{position:fixed;inset:0}.deck-stage .deck-slide{position:absolute;inset:0;height:auto;padding:0;z-index:1}.deck-stage .deck-slide[data-off]{opacity:0;pointer-events:none;z-index:0}.deck-stage .deck-slide[data-leaving]{z-index:2;pointer-events:none}.deck-stage [data-finished-gone]{visibility:inherit}.deck-stage [data-build-hidden],.deck-stage [data-magic-hidden],.deck-stage [data-embed-under],.deck-stage [data-embed-dead] [data-embed-pic]{visibility:hidden}.deck-stage [data-embed-dead-label]{display:flex}}
+[data-embed-dead-label]{display:none}
+@page{size:1920px 1080px;margin:0}
+@media print{html,html.deck-js,body{background:none;overflow:visible;height:auto;color-scheme:light}:root .deck-slide{display:block;height:auto;padding:0;break-after:page;page-break-after:always;-webkit-print-color-adjust:exact;print-color-adjust:exact}:root .deck-slide:last-child{break-after:auto;page-break-after:auto}:root .deck-fit{width:auto;height:auto}:root .deck-scaler{transform:none}.deck-pager{display:none}iframe{display:none!important}}
+
+/* Slide 8: entrada dos textos abaixo dos cards (mesmo easing/deslocamento "rise" do deck) */
+.riscado{position:relative}
+.riscado::after{content:"";position:absolute;left:0;right:0;top:55%;height:2px;background:rgb(0,113,65);transform-origin:left center}
+@keyframes anim-sobe{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:none}}
+@keyframes anim-risca{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.deck-slide:not([data-off]) .anim-sobe{animation:anim-sobe 380ms cubic-bezier(0.2,0.7,0.2,1) var(--atraso,0ms) both}
+.deck-slide:not([data-off]) .riscado::after{animation:anim-risca 450ms cubic-bezier(0.33,0.01,0.2,1) calc(var(--atraso,0ms) + 400ms) both}
+@media (prefers-reduced-motion:reduce),print{.deck-slide .anim-sobe,.deck-slide .riscado::after{animation:none!important}}
+
+/* Celular: nunca rolar para os lados; o slide sempre cabe na tela */
+html, body { max-width: 100%; overflow-x: hidden; }
+main { overflow-x: clip; }
+.deck-js .deck-slide { max-width: 100vw; }
+.deck-js .deck-fit { max-width: 100vw; }
+.slide iframe { max-width: none; }
+@media screen { html.deck-stage, html.deck-stage body { overscroll-behavior: none; touch-action: manipulation; } }

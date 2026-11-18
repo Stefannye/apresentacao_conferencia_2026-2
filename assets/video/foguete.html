@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Foguete decolando</title>
+<style>
+html, body { margin: 0; height: 100%; background: transparent; overflow: hidden; }
+body { display: flex; align-items: center; justify-content: center; }
+svg { width: 100vw; height: 100vh; display: block; }
+</style>
+</head>
+<body>
+<svg id="svg" viewBox="0 0 900 1000" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Foguete branco e laranja se preparando e decolando entre nuvens de fumaça">
+  <defs>
+    <linearGradient id="gBody" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#E6D6C7"/><stop offset="0.28" stop-color="#FFFFFF"/><stop offset="0.55" stop-color="#FBF4EC"/><stop offset="0.82" stop-color="#EBDDCF"/><stop offset="1" stop-color="#D2BCA8"/>
+    </linearGradient>
+    <linearGradient id="gOrange" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#E88500"/><stop offset="0.3" stop-color="#FFC24A"/><stop offset="0.6" stop-color="#FDAE2A"/><stop offset="1" stop-color="#D97400"/>
+    </linearGradient>
+    <linearGradient id="gOrangeV" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#FFD36B"/><stop offset="0.5" stop-color="#FBA620"/><stop offset="1" stop-color="#DA7600"/>
+    </linearGradient>
+    <radialGradient id="gGlass" cx="0.45" cy="0.4" r="0.65">
+      <stop offset="0" stop-color="#7A5440"/><stop offset="0.55" stop-color="#3A2418"/><stop offset="1" stop-color="#140B06"/>
+    </radialGradient>
+    <radialGradient id="gPuff" cx="0.38" cy="0.32" r="0.7">
+      <stop offset="0" stop-color="#FFFFFF"/><stop offset="0.45" stop-color="#FCF4EC"/><stop offset="0.85" stop-color="#EBDACB"/><stop offset="1" stop-color="#DCC8B6"/>
+    </radialGradient>
+    <radialGradient id="gFlame" cx="0.5" cy="0.25" r="0.75">
+      <stop offset="0" stop-color="#FFF6D8"/><stop offset="0.35" stop-color="#FFD15C"/><stop offset="0.75" stop-color="#FF9A1F"/><stop offset="1" stop-color="#FF9A1F" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="gShadow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7A5A3A" stop-opacity="0.32"/><stop offset="1" stop-color="#7A5A3A" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="cNose"><rect x="-130" y="-400" width="260" height="128"/></clipPath>
+    <clipPath id="cBoosterTip"><rect x="-40" y="-200" width="80" height="44"/></clipPath>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+    <g id="booster">
+      <path d="M -22 -40 C -26 -100, -20 -150, 0 -180 C 20 -150, 26 -100, 22 -40 Z" fill="url(#gBody)"/>
+      <path d="M -22 -40 C -26 -100, -20 -150, 0 -180 C 20 -150, 26 -100, 22 -40 Z" fill="url(#gOrange)" clip-path="url(#cBoosterTip)"/>
+      <rect x="-24" y="-58" width="48" height="16" rx="6" fill="url(#gOrange)"/>
+      <path d="M -16 -42 L 16 -42 L 20 -26 L -20 -26 Z" fill="#E9DACB"/>
+      <ellipse cx="-8" cy="-110" rx="4" ry="26" fill="#FFFFFF" opacity="0.8" filter="url(#soft)"/>
+    </g>
+  </defs>
+  <g id="world">
+    <ellipse id="shadow" cx="450" cy="832" rx="230" ry="30" fill="url(#gShadow)"/>
+    <g id="back"></g>
+    <g id="rocket">
+      <g id="flame"><path d="M -34 -14 C -30 30, -12 70, 0 96 C 12 70, 30 30, 34 -14 Z" fill="url(#gFlame)"/></g>
+      <!-- aletas traseiras -->
+      <path d="M -86 -150 C -136 -128, -150 -78, -144 -32 C -124 -44, -104 -54, -84 -60 Z" fill="url(#gOrangeV)"/>
+      <path d="M 86 -150 C 136 -128, 150 -78, 144 -32 C 124 -44, 104 -54, 84 -60 Z" fill="url(#gOrangeV)"/>
+      <!-- bocal -->
+      <path d="M -46 -48 L 46 -48 L 54 -14 Q 0 -4 -54 -14 Z" fill="url(#gOrange)"/>
+      <ellipse cx="0" cy="-14" rx="54" ry="10" fill="#C96A00"/>
+      <!-- corpo -->
+      <path id="body" d="M -92 -62 C -106 -182, -78 -284, 0 -346 C 78 -284, 106 -182, 92 -62 C 50 -48, -50 -48, -92 -62 Z" fill="url(#gBody)"/>
+      <path d="M -92 -62 C -106 -182, -78 -284, 0 -346 C 78 -284, 106 -182, 92 -62 C 50 -48, -50 -48, -92 -62 Z" fill="url(#gOrange)" clip-path="url(#cNose)"/>
+      <path d="M -70 -272 Q 0 -258 70 -272" stroke="#E08000" stroke-width="3" fill="none" opacity="0.5"/>
+      <rect x="-90" y="-86" width="180" height="30" rx="13" fill="url(#gOrange)"/>
+      <ellipse cx="-44" cy="-190" rx="12" ry="74" fill="#FFFFFF" opacity="0.85" filter="url(#soft)"/>
+      <!-- janela -->
+      <circle cx="0" cy="-200" r="48" fill="url(#gOrange)"/>
+      <circle cx="0" cy="-200" r="48" fill="none" stroke="#C86C00" stroke-width="2" opacity="0.4"/>
+      <circle cx="0" cy="-200" r="35" fill="url(#gGlass)"/>
+      <path d="M -29 -204 Q 0 -221 29 -204 Q 0 -195 -29 -204 Z" fill="#9C7462" opacity="0.6"/>
+      <ellipse cx="-12" cy="-215" rx="11" ry="7" fill="#FFFFFF" opacity="0.9"/>
+      <circle cx="12" cy="-186" r="3" fill="#FFFFFF" opacity="0.5"/>
+      <!-- propulsores laterais -->
+      <use href="#booster" x="-112" y="0"/>
+      <use href="#booster" x="112" y="0"/>
+    </g>
+    <g id="front"></g>
+  </g>
+</svg>
+<script>
+(function () {
+  var D = 7.2, GX = 450, GY = 830, SC = 1.4, NS = 'http://www.w3.org/2000/svg';
+  var $ = function (id) { return document.getElementById(id); };
+  function cl(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function seg(t, a, b) { return cl((t - a) / (b - a)); }
+  function out(u) { return 1 - Math.pow(1 - u, 3); }
+  // gerador pseudoaleatório fixo, para a animação ser sempre igual
+  var seed = 7; function rnd() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+
+  function rocketAt(t) {
+    var x = GX, y = GY, rot = 0, sx = 1, sy = 1, op = 1;
+    if (t < 2.6) {
+      var prep = seg(t, 0.6, 2.6);
+      var amp = prep * prep * 3.2;
+      x += Math.sin(t * 95) * amp; y += Math.cos(t * 81) * amp * 0.5;
+      var squash = Math.sin(Math.PI * seg(t, 2.1, 2.6)) * 0.07;
+      sy = 1 - squash; sx = 1 + squash * 0.6;
+    } else if (t < 5.4) {
+      var u = Math.pow(seg(t, 2.6, 4.6), 2.1);
+      x = GX + 300 * u; y = GY - 1250 * u;
+      rot = 16 * out(seg(t, 2.75, 3.6));
+      var st = Math.sin(Math.PI * seg(t, 2.6, 3.1)) * 0.08; sy = 1 + st; sx = 1 - st * 0.5;
+    }
+    if (t >= 5.4) {
+      var a = seg(t, 5.9, 6.5); op = a; var b = out(a); y = GY - 30 * (1 - b); sx = sy = 0.9 + 0.1 * b;
+      if (t < 5.9) op = 0;
+    }
+    return { x: x, y: y, rot: rot, sx: sx, sy: sy, op: op };
+  }
+
+  // nuvem da base (preparação) e rastro (voo)
+  var P = [];
+  for (var i = 0; i < 34; i++) {
+    var side = rnd() < 0.5 ? -1 : 1;
+    P.push({ k: 'base', t0: 0.7 + rnd() * 1.9, x: GX + side * (30 + rnd() * 190), y: GY - 8 - rnd() * 50, r: 24 + rnd() * 40,
+             vx: side * (12 + rnd() * 40), vy: -4 - rnd() * 10, front: rnd() < 0.55 });
+  }
+  for (i = 0; i < 70; i++) {
+    var t0 = 2.55 + i * 0.03;
+    P.push({ k: 'trail', t0: t0, jx: (rnd() - 0.5) * 30, jy: rnd() * 14, r: 16 + rnd() * 22, vx: (rnd() - 0.5) * 90, vy: 40 + rnd() * 70, front: rnd() < 0.5 });
+  }
+  P.forEach(function (p) {
+    var c = document.createElementNS(NS, 'circle'); c.setAttribute('fill', 'url(#gPuff)'); p.el = c;
+    (p.front ? $('front') : $('back')).appendChild(c);
+    if (p.k === 'trail') { var r = rocketAt(p.t0); var a = r.rot * Math.PI / 180; p.x = r.x - Math.sin(a) * -10 + p.jx; p.y = r.y + 14 + p.jy; }
+  });
+
+  function render(t) {
+    t = ((t % D) + D) % D;
+    var r = rocketAt(t);
+    $('rocket').setAttribute('transform', 'translate(' + r.x + ' ' + r.y + ') rotate(' + r.rot + ') scale(' + (r.sx * SC) + ' ' + (r.sy * SC) + ')');
+    $('rocket').setAttribute('opacity', r.op);
+    var lift = cl((GY - r.y) / 300);
+    $('shadow').setAttribute('opacity', (1 - lift) * (t >= 5.4 ? r.op : 1));
+    $('shadow').setAttribute('rx', 230 * (1 - lift * 0.5));
+    // chama: aparece na decolagem, com leve oscilação
+    var fl = t < 2.4 ? 0 : t < 4.6 ? out(seg(t, 2.4, 2.75)) : 1 - seg(t, 4.4, 4.7);
+    if (t >= 2.1 && t < 2.4) fl = 0.35 * seg(t, 2.1, 2.4);
+    var fs = 0.9 + 0.12 * Math.sin(t * 22) + 0.05 * Math.sin(t * 37);
+    $('flame').setAttribute('transform', 'scale(' + (fl * (0.95 + 0.05 * Math.sin(t * 29))) + ' ' + (fl * fs * (t > 2.6 ? 1.35 : 1)) + ')');
+    $('flame').setAttribute('opacity', fl);
+    P.forEach(function (p) {
+      var age = t - p.t0, el = p.el;
+      if (age < 0 || t >= 5.6) { el.setAttribute('r', 0); return; }
+      var x, y, rr, op;
+      if (p.k === 'base') {
+        var grow = out(cl(age / 0.5));
+        var blast = cl((t - 2.6) / 1.4);
+        x = p.x + p.vx * age * 0.35 + (p.x - GX) * blast * 1.1;
+        y = p.y + p.vy * age * 0.4 - 10 * blast;
+        rr = p.r * grow * (1 + blast * 0.6);
+        op = 1 - seg(t, 3.0, 4.6);
+      } else {
+        var life = 1.25, u = cl(age / life);
+        x = p.x + p.vx * age; y = p.y + p.vy * age * (1 - u * 0.4);
+        rr = p.r * (0.35 + out(u) * 1.1);
+        op = 1 - seg(age, 0.6, life);
+      }
+      el.setAttribute('cx', x.toFixed(1)); el.setAttribute('cy', y.toFixed(1)); el.setAttribute('r', Math.max(0, rr).toFixed(1));
+      el.setAttribute('opacity', Math.max(0, op).toFixed(3));
+    });
+  }
+  window.__render = render; window.__duration = D;
+  var t0 = null, manual = /capture/.test(location.hash);
+  function frame(ts) { if (t0 === null) t0 = ts; render((ts - t0) / 1000); requestAnimationFrame(frame); }
+  document.body.addEventListener('click', function () { t0 = null; });
+  render(0);
+  if (!manual) requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
